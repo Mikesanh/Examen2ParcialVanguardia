@@ -20,13 +20,14 @@ namespace SolarEnergySystem.Core.Services
             if (ER.KiloWatt < 0)
             {
                 return ServiceResult<ElectricityReading>.ErrorResult("No se aceptan vlaores menores a 0")
-            }
-            //if (ER.Panel.MeasuringUnit.Equals("Watt"))
-            //{
-            //   ER.
-            //}
+            };
+            if (ER.Panel.MeasuringUnit.Equals("Watt"))
+            {
+                ER.KiloWatt = ER.KiloWatt / 1000;
+            };
 
-             return ServiceResult<ElectricityReading>.SuccessResult(_electricityReadingService.AddElectricityReading(ER));
+
+            return ServiceResult<ElectricityReading>.SuccessResult(_electricityReadingService.AddElectricityReading(ER));
         }
     }
 }

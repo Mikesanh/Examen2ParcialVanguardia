@@ -27,7 +27,7 @@ namespace SolarEnergySystem.Infrastructure.Repositories
 
         public ElectricityReading LowestTimeReading(string pId)
         {
-          
+            
                 
         }
 
