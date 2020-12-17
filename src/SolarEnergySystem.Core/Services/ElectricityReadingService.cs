@@ -17,15 +17,16 @@ namespace SolarEnergySystem.Core.Services
         }
         public ServiceResult<ElectricityReading> AddElectricityReading(ElectricityReading ER)
         {
+            ER.ReadingDateTime = DateTime.UtcNow;
             if (ER.KiloWatt < 0)
             {
                 return ServiceResult<ElectricityReading>.ErrorResult("No se aceptan vlaores menores a 0")
-            };
+            }; 
             if (ER.Panel.MeasuringUnit.Equals("Watt"))
             {
                 ER.KiloWatt = ER.KiloWatt / 1000;
             };
-
+           
 
             return ServiceResult<ElectricityReading>.SuccessResult(_electricityReadingService.AddElectricityReading(ER));
         }
