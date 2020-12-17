@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using SolarEnergySystem.Core.Entities;
 using SolarEnergySystem.Core.Interfaces;
+using SolarEnergySystem.Core.Enums;
 using System.Linq;
 
 namespace SolarEnergySystem.Core.Services
@@ -10,6 +11,7 @@ namespace SolarEnergySystem.Core.Services
     public class ElectricityReadingService : IElectricityReadingService
     {
         private readonly IElectricityReadingService _electricityReadingService;
+         
 
         public ElectricityReadingService(IElectricityReadingService electricityReadingService)
         {
@@ -26,7 +28,8 @@ namespace SolarEnergySystem.Core.Services
             {
                 ER.KiloWatt = ER.KiloWatt / 1000;
             };
-           
+            //if (ER.Panel.PanelType ==    ) 
+            //{ }
 
             return ServiceResult<ElectricityReading>.SuccessResult(_electricityReadingService.AddElectricityReading(ER));
         }
