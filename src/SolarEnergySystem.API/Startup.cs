@@ -11,6 +11,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SolarEnergySystem.Infrastructure;
+using SolarEnergySystem.Core.Interfaces;
+using SolarEnergySystem.Infrastructure.Repositories;
 
 namespace SolarEnergySystem.API
 {
@@ -27,6 +29,7 @@ namespace SolarEnergySystem.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped(typeof(IRepository<,>), typeof(EntityFrameworkRepository<,>));
             services.AddDbContext<SolarEnergySystemDatabaseContext>(options => options.UseInMemoryDatabase("SolarEnergy"));
         }
 
