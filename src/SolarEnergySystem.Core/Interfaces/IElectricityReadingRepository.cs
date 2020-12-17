@@ -5,7 +5,11 @@ using SolarEnergySystem.Core.Entities;
 
 namespace SolarEnergySystem.Core.Interfaces
 {
-    interface IElectricityReadingRepository
+  public interface IElectricityReadingRepository
     {
+        ElectricityReading AddElectricityReading(ElectricityReading ER);
+        ElectricityReading LowestTimeReading(string pId);
+
+
     }
 }
